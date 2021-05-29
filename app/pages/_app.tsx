@@ -1,15 +1,18 @@
+import LoginForm from "app/auth/components/LoginForm"
+import { engine } from "app/core/utils/styletron"
+import { BaseProvider, LightTheme } from "baseui"
 import {
   AppProps,
-  ErrorComponent,
-  useRouter,
   AuthenticationError,
   AuthorizationError,
+  ErrorComponent,
   ErrorFallbackProps,
   useQueryErrorResetBoundary,
+  useRouter,
 } from "blitz"
-import { ErrorBoundary } from "react-error-boundary"
-import LoginForm from "app/auth/components/LoginForm"
 import { Suspense } from "react"
+import { ErrorBoundary } from "react-error-boundary"
+import { Provider as StyletronProvider } from "styletron-react"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -22,7 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
         resetKeys={[router.asPath]}
         onReset={useQueryErrorResetBoundary().reset}
       >
-        {getLayout(<Component {...pageProps} />)}
+        <StyletronProvider value={engine}>
+          <BaseProvider theme={LightTheme}>{getLayout(<Component {...pageProps} />)}</BaseProvider>
+        </StyletronProvider>
       </ErrorBoundary>
     </Suspense>
   )
