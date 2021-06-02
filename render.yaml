@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: blitzapp
+    name: clockz
     env: node
     plan: starter
     buildCommand: yarn --frozen-lockfile --prod=false && blitz build
