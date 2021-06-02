@@ -1,6 +1,8 @@
+import "app/styles/global.css"
 import LoginForm from "app/auth/components/LoginForm"
 import { engine } from "app/core/utils/styletron"
-import { BaseProvider, LightTheme } from "baseui"
+import { theme } from "app/core/utils/theme"
+import { BaseProvider } from "baseui"
 import {
   AppProps,
   AuthenticationError,
@@ -26,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
         onReset={useQueryErrorResetBoundary().reset}
       >
         <StyletronProvider value={engine}>
-          <BaseProvider theme={LightTheme}>{getLayout(<Component {...pageProps} />)}</BaseProvider>
+          <BaseProvider theme={theme}>{getLayout(<Component {...pageProps} />)}</BaseProvider>
         </StyletronProvider>
       </ErrorBoundary>
     </Suspense>
