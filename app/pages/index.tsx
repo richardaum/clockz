@@ -1,3 +1,3 @@
-import { Home } from "app/core/pages/Home"
+import { Home } from "app/core/components/Home"
 
 export default Home
