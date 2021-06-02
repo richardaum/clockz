@@ -17,11 +17,11 @@ class MyDocument extends Document<{ stylesheets: Sheet[] }> {
 
     const initialProps = await Document.getInitialProps({
       ...context,
-      renderPage,
+      renderPage: renderPage,
     })
 
     const stylesheets = (engine instanceof Server && engine.getStylesheets()) || []
-    return { ...initialProps, stylesheets }
+    return { ...initialProps, stylesheets: stylesheets }
   }
 
   render() {

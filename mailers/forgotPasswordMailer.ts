@@ -18,7 +18,7 @@ export function forgotPasswordMailer({ to, token }: ResetPasswordMailer) {
 
   const msg = {
     from: "TODO@example.com",
-    to,
+    to: to,
     subject: "Your Password Reset Instructions",
     html: `
       <h1>Reset Your Password</h1>
@@ -31,7 +31,7 @@ export function forgotPasswordMailer({ to, token }: ResetPasswordMailer) {
   }
 
   return {
-    async send() {
+    send: async function () {
       if (process.env.NODE_ENV === "production") {
         // TODO - send the production email, like this:
         // await postmark.sendEmail(msg)

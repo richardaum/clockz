@@ -12,7 +12,7 @@ export default resolver.pipe(resolver.zod(ResetPassword), async ({ password, tok
   // 1. Try to find this token in the database
   const hashedToken = hash256(token)
   const possibleToken = await db.token.findFirst({
-    where: { hashedToken, type: "RESET_PASSWORD" },
+    where: { hashedToken: hashedToken, type: "RESET_PASSWORD" },
     include: { user: true },
   })
 
@@ -34,14 +34,14 @@ export default resolver.pipe(resolver.zod(ResetPassword), async ({ password, tok
   const hashedPassword = await SecurePassword.hash(password.trim())
   const user = await db.user.update({
     where: { id: savedToken.userId },
-    data: { hashedPassword },
+    data: { hashedPassword: hashedPassword },
   })
 
   // 6. Revoke all existing login sessions for this user
   await db.session.deleteMany({ where: { userId: user.id } })
 
   // 7. Now log the user in with the new credentials
-  await login({ email: user.email, password }, ctx)
+  await login({ email: user.email, password: password }, ctx)
 
   return true
 })
