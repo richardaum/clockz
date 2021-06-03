@@ -1,8 +1,8 @@
 import { expectedDailyHours } from "app/core/constants"
 import { week as data } from "app/fixtures/reports"
 import { getDay, isSameDay } from "date-fns"
-import { formatDuration } from "./formatDuration"
-import { getDuration } from "./getDuration"
+import { formatDuration } from "../utils/formatDuration"
+import { getDuration } from "../utils/getDuration"
 
 const weekdaysList = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 

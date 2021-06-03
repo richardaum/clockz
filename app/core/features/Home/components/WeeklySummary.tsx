@@ -7,8 +7,8 @@ import { LabelSmall } from "baseui/typography"
 import { BlitzPage } from "blitz"
 import { Duration } from "date-fns"
 import { normalize, sum } from "duration-fns"
-import { formatDuration } from "../hooks/formatDuration"
-import { getDuration } from "../hooks/getDuration"
+import { formatDuration } from "../utils/formatDuration"
+import { getDuration } from "../utils/getDuration"
 
 export const WeeklySummary: BlitzPage = () => {
   const [css] = useStyletron()

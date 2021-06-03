@@ -1,6 +1,6 @@
 import { intervalToDuration } from "date-fns"
 import { normalize, sum, toHours } from "duration-fns"
-import { getReportTypeByIdx } from "./useWeeklysStatus"
+import { getReportTypeByIdx } from "../hooks/useWeeklysStatus"
 
 export function getDuration(reports: Date[]) {
   const duration = reports.reduce((duration, currentDate, i) => {

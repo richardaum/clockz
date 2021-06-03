@@ -5,8 +5,8 @@ import { LabelSmall } from "baseui/typography"
 import { BlitzPage } from "blitz"
 import { isSameDay } from "date-fns"
 import { ZERO } from "duration-fns/dist/lib/units"
-import { formatDuration } from "../hooks/formatDuration"
-import { getDuration } from "../hooks/getDuration"
+import { formatDuration } from "../utils/formatDuration"
+import { getDuration } from "../utils/getDuration"
 
 export const DailySummary: BlitzPage = () => {
   const [css, theme] = useStyletron()
