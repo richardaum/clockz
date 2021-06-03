@@ -1,13 +1,14 @@
-import { useStyletron } from "baseui"
-import { Block } from "baseui/block"
-import { DisplaySmall, LabelSmall } from "baseui/typography"
-import { Avatar } from "baseui/avatar"
-import { BlitzPage } from "blitz"
+import TimeDisplay from "app/core/components/TimeDisplay"
 import { week } from "app/fixtures/reports"
-import { getDuration } from "../hooks/getDuration"
+import { useStyletron } from "baseui"
+import { Avatar } from "baseui/avatar"
+import { Block } from "baseui/block"
+import { LabelSmall } from "baseui/typography"
+import { BlitzPage } from "blitz"
 import { Duration } from "date-fns"
 import { normalize, sum } from "duration-fns"
 import { formatDuration } from "../hooks/formatDuration"
+import { getDuration } from "../hooks/getDuration"
 
 export const WeeklySummary: BlitzPage = () => {
   const [css] = useStyletron()
@@ -23,12 +24,9 @@ export const WeeklySummary: BlitzPage = () => {
       <Avatar name="profile" src="./avatar.jpeg" size="scale1600" />
 
       <Block flex="1">
-        <DisplaySmall
-          overrides={{ Block: { style: { fontWeight: 300 } } }}
-          className={css({ textAlign: "right" })}
-        >
+        <TimeDisplay className={css({ textAlign: "right" })}>
           {formatDuration(duration)}
-        </DisplaySmall>
+        </TimeDisplay>
 
         <LabelSmall color="primary300" className={css({ textAlign: "right" })}>
           This week

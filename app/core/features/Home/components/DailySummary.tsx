@@ -1,6 +1,7 @@
+import TimeDisplay from "app/core/components/TimeDisplay"
 import { week } from "app/fixtures/reports"
 import { useStyletron } from "baseui"
-import { DisplaySmall, LabelSmall } from "baseui/typography"
+import { LabelSmall } from "baseui/typography"
 import { BlitzPage } from "blitz"
 import { isSameDay } from "date-fns"
 import { ZERO } from "duration-fns/dist/lib/units"
@@ -13,19 +14,16 @@ export const DailySummary: BlitzPage = () => {
   // FIXME useMemo to improve performance
   const day = week.find((day) => {
     const firstReport = day.reports?.[0]
+    // FIXME assuming we are always on the current week
     return firstReport ? isSameDay(new Date(), firstReport) : false
   })
   const { duration } = day?.reports ? getDuration(day?.reports) : { duration: ZERO }
 
   return (
     <div className={css({ marginBottom: theme.sizing.scale1000 })}>
-      <DisplaySmall
-        color="accent"
-        overrides={{ Block: { style: { fontWeight: 300 } } }}
-        className={css({ textAlign: "right" })}
-      >
+      <TimeDisplay color="accent" className={css({ textAlign: "right" })}>
         {formatDuration(duration)}
-      </DisplaySmall>
+      </TimeDisplay>
 
       <LabelSmall color="primary300" className={css({ textAlign: "right" })}>
         Today

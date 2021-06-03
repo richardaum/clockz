@@ -1,9 +1,9 @@
 import Layout from "app/core/layouts/Layout"
+import { Block } from "baseui/block"
 import { BlitzPage } from "blitz"
+import Counter from "./Counter"
 import WeeklyStats from "./WeeklyStats"
 import { WeeklySummary } from "./WeeklySummary"
-import { DailySummary } from "./DailySummary"
-import { Block } from "baseui/block"
 
 export const Home: BlitzPage = (props) => {
   return (
@@ -17,7 +17,7 @@ export const Home: BlitzPage = (props) => {
       </Block>
 
       <Block marginBottom="scale800">
-        <DailySummary />
+        <Counter />
       </Block>
     </Layout>
   )
