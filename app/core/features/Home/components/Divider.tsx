@@ -1,4 +1,4 @@
-import { animated, config, useSpring, useTransition } from "@react-spring/web"
+import { animated, config, useSpring } from "@react-spring/web"
 import { useStyletron } from "baseui"
 import { Block } from "baseui/block"
 import React, { useEffect, useState } from "react"

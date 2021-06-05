@@ -1,7 +1,7 @@
 import { useStyletron } from "baseui"
 import { Block } from "baseui/block"
 import React from "react"
-import { animated, config, useSpring, useTransition } from "react-spring"
+import { animated, config, useTransition } from "react-spring"
 
 interface Props {
   current?: string
