@@ -2934,7 +2934,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@*, classnames@2.3.1:
+classnames@*:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -8363,11 +8363,6 @@ react-shallow-renderer@^16.13.1:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0"
 
-react-simple-animate@3.3.12:
-  version "3.3.12"
-  resolved "https://registry.yarnpkg.com/react-simple-animate/-/react-simple-animate-3.3.12.tgz#ddea0f230feb3c1f069fbdb0a26e735e0b233265"
-  integrity sha512-lFXjxD6ficcpOMsHfcDs1jqdkCve6jNlJnubOCzVOLswFDRANsaLN4KwpezDuliEFz8Q1zyj4J7Tmj3KMRnPcg==
-
 react-spring@9.2.1:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.2.1.tgz#999ff52142fbf85180b79b3b7b9266e0d3539f8d"
@@ -9131,11 +9126,6 @@ split-string@^3.0.1, split-string@^3.0.2:
   integrity sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==
   dependencies:
     extend-shallow "^3.0.0"
-
-springframes@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/springframes/-/springframes-0.5.4.tgz#e6d181d74b10d384f1ee689e5fa2cc5649f9d908"
-  integrity sha512-PShyUcpcSSc3ax37pBdZtF3bulBVjt8BknMQpHvLv2Nb0u21LJV7fDtxCLWh4dfcDP47qKCyRtBKuiZa9SbjCQ==
 
 sprintf-js@^1.1.2:
   version "1.1.2"
@@ -9914,11 +9904,6 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typesafe-actions@^3.2.1:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/typesafe-actions/-/typesafe-actions-3.4.0.tgz#cdf925941eafc75a659ebc2d584b673b86a1a5ab"
-  integrity sha512-FW6f61NEe8B8vDftLs3vFMLzyROvqlDS6jhbc2j/fPlCZ6MsY3V4bE4i83uPGfy7Kvvq70ePtsb4nPes9ROXqw==
-
 typescript@~4.2:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
@@ -10032,20 +10017,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-animate-presence@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/use-animate-presence/-/use-animate-presence-0.5.2.tgz#bca34a542ab86d931ed26b94ad765d31da63190e"
-  integrity sha512-oUmguxsNwx2otDuV4ujUuZBqnHVKzocbLYN1qaakxr7TJ16WvtUwME+7wQ0I8BL8FjqbqgUpOqjLEyKSpn/+eg==
-  dependencies:
-    springframes "^0.5.4"
-
-use-array-state@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/use-array-state/-/use-array-state-1.0.2.tgz#dfbd4b3ec0eaf802059d0079c27d2010cce6b51c"
-  integrity sha512-yrkKvJXe4nvwkJ+QE3H5sjc5r6EfWLuJkudEzKja6AUzuZW655QVRRSQpguf1nT41Rcp7341SO6JSAUkFlk3Og==
-  dependencies:
-    typesafe-actions "^3.2.1"
 
 use-callback-ref@^1.2.1:
   version "1.2.5"
