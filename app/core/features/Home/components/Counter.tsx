@@ -1,45 +1,32 @@
+import useInterval from "@use-it/interval"
 import TimeDisplay from "app/core/components/TimeDisplay"
 import { Block } from "baseui/block"
 import { ZERO } from "duration-fns/dist/lib/units"
+import { nth } from "lodash"
 import React, { useState } from "react"
-import { Divider } from "./Divider"
-import { getLastDigit } from "../utils/getLastDigit"
 import { getNextSecond } from "../utils/getNextSecond"
+import { Divider } from "./Divider"
 import { Slider } from "./Slider"
-import { UpDownAnimation } from "./UpDownAnimation"
 
 interface Props {}
 
 const Counter = (props: Props) => {
   const [duration, setDuration] = useState(ZERO)
-  const [playing, setPlaying] = useState(false)
+
+  useInterval(() => {
+    setDuration(getNextSecond(duration))
+  }, 1000)
 
   return (
     <>
       <TimeDisplay>
         <Block display="flex" justifyContent="center" alignItems="flex-start">
-          <span>0</span>
-          <UpDownAnimation>
-            <Divider />
-          </UpDownAnimation>
-          <span>0</span>
-          <Slider
-            active={playing}
-            current={getLastDigit(duration.seconds)}
-            next={getLastDigit(getNextSecond(duration).seconds)}
-            // @ts-ignore
-            onAnimationEnd={() => {
-              console.log("onAnimationIteration")
-              setPlaying((playing) => !playing)
-              // setDuration((duration) => getNextSecond(duration))
-            }}
-          />
+          <Slider current={nth(duration.minutes.toString(), -1) || "0"} />
+          <Divider tick={nth(duration.seconds.toString(), -1) || "0"} />
+          <Slider current={nth(duration.seconds.toString(), -2) || "0"} />
+          <Slider current={nth(duration.seconds.toString(), -1) || "0"} />
         </Block>
       </TimeDisplay>
-
-      <button onClick={() => setPlaying((playing) => !playing)}>
-        {playing ? "Stop" : "Start"}
-      </button>
     </>
   )
 }

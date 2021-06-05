@@ -1,87 +1,31 @@
 import { useStyletron } from "baseui"
 import { Block } from "baseui/block"
-import React, { ReactNode } from "react"
-import { stopPropagation } from "../utils/stopPropagation"
+import React from "react"
+import { animated, config, useSpring, useTransition } from "react-spring"
 
-export function Slider({
-  active,
-  current,
-  next,
-  ...props
-}: {
-  active: boolean
-  current: ReactNode
-  next: ReactNode
-}) {
-  const [css, theme] = useStyletron()
+interface Props {
+  current?: string
+}
 
-  const fadein = {
-    "0%": { opacity: 0 },
-    "20%": { opacity: 0 },
-    "100%": { opacity: 1 },
-  }
+export const Slider = ({ current }: Props) => {
+  const [css] = useStyletron()
 
-  const fadeout = {
-    "0%": { opacity: 1 },
-    "70%": { opacity: 0 },
-    "100%": { opacity: 0 },
-  }
-
-  const top = {
-    "100%": { transform: "translateY(-50%)" },
-  }
+  const transitions = useTransition(current, {
+    initial: { opacity: 1 },
+    from: { opacity: 0, transform: "translateY(100%)" },
+    enter: { opacity: 1, transform: "translateY(0px)" },
+    leave: [{ opacity: 0, transform: "translateY(-50%)" }],
+    config: config.wobbly,
+  })
 
   return (
-    <Block
-      {...props}
-      className={
-        active
-          ? css({
-              // @ts-ignore
-              animationName: top,
-              animationDuration: theme.animation.timing1000,
-              // animationIterationCount: "infinite",
-              animationTimingFunction: theme.animation.easeInOutQuinticCurve,
-            })
-          : ""
-      }
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Block
-        className={
-          active
-            ? css({
-                // @ts-ignore
-                animationName: fadeout,
-                animationDuration: theme.animation.timing1000,
-                // animationIterationCount: "infinite",
-                animationTimingFunction: theme.animation.easeInOutQuinticCurve,
-              })
-            : ""
-        }
-        {...stopPropagation}
-      >
-        {current}
-      </Block>
-      <Block
-        className={
-          active
-            ? css({
-                // @ts-ignore
-                animationName: fadein,
-                animationDuration: theme.animation.timing1000,
-                // animationIterationCount: "infinite",
-                animationTimingFunction: theme.animation.easeInOutQuinticCurve,
-              })
-            : ""
-        }
-        {...stopPropagation}
-      >
-        {next}
-      </Block>
-    </Block>
+    <div style={{ position: "relative" }}>
+      <Block className={css({ opacity: 0 })}>{current}</Block>
+      {transitions((props, item) => (
+        <animated.div key={item} style={{ ...props, top: 0, left: 0, position: "absolute" }}>
+          {item}
+        </animated.div>
+      ))}
+    </div>
   )
 }

@@ -1,4 +1,4 @@
 module.exports = {
   presets: ["blitz/babel"],
-  plugins: [],
+  plugins: ["babel-plugin-transform-styletron-display-name"],
 }
