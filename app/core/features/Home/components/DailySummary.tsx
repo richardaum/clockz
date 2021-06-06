@@ -1,6 +1,11 @@
+import { Fill } from "app/core/components/Fill"
+import { FullWidthButton } from "app/core/components/FullWidthButton"
 import TimeDisplay from "app/core/components/TimeDisplay"
+import { useTime } from "app/core/providers/TimeProvider"
 import { week } from "app/fixtures/reports"
-import { useStyletron } from "baseui"
+import { styled, useStyletron } from "baseui"
+import { Block } from "baseui/block"
+import { Button } from "baseui/button"
 import { LabelSmall } from "baseui/typography"
 import { BlitzPage } from "blitz"
 import { isSameDay } from "date-fns"
@@ -9,7 +14,8 @@ import { formatDuration } from "../utils/formatDuration"
 import { getDuration } from "../utils/getDuration"
 
 export const DailySummary: BlitzPage = () => {
-  const [css, theme] = useStyletron()
+  const [css] = useStyletron()
+  const { start } = useTime()
 
   // FIXME useMemo to improve performance
   const day = week.find((day) => {
@@ -20,7 +26,7 @@ export const DailySummary: BlitzPage = () => {
   const { duration } = day?.reports ? getDuration(day?.reports) : { duration: ZERO }
 
   return (
-    <div className={css({ marginBottom: theme.sizing.scale1000 })}>
+    <Fill>
       <TimeDisplay color="accent" className={css({ textAlign: "right" })}>
         {formatDuration(duration)}
       </TimeDisplay>
@@ -28,6 +34,10 @@ export const DailySummary: BlitzPage = () => {
       <LabelSmall color="primary300" className={css({ textAlign: "right" })}>
         Today
       </LabelSmall>
-    </div>
+
+      <Block marginTop="auto">
+        <FullWidthButton onClick={start}>Start</FullWidthButton>
+      </Block>
+    </Fill>
   )
 }

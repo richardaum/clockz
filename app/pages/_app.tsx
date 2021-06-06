@@ -12,9 +12,10 @@ import {
   useQueryErrorResetBoundary,
   useRouter,
 } from "blitz"
-import { Suspense } from "react"
+import { Fragment, Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { Provider as StyletronProvider } from "styletron-react"
+import { Fill } from "app/core/components/Fill"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -28,7 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
         onReset={useQueryErrorResetBoundary().reset}
       >
         <StyletronProvider value={engine}>
-          <BaseProvider theme={theme}>{getLayout(<Component {...pageProps} />)}</BaseProvider>
+          <BaseProvider overrides={{ AppContainer: { component: Fill } }} theme={theme}>
+            {getLayout(<Component {...pageProps} />)}
+          </BaseProvider>
         </StyletronProvider>
       </ErrorBoundary>
     </Suspense>

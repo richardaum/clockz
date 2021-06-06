@@ -14,7 +14,7 @@ export const Slider = ({ current }: Props) => {
     initial: { opacity: 1 },
     from: { opacity: 0, transform: "translateY(100%)" },
     enter: { opacity: 1, transform: "translateY(0px)" },
-    leave: [{ opacity: 0, transform: "translateY(-50%)" }],
+    leave: { opacity: 0, transform: "translateY(-50%)" },
     config: config.wobbly,
   })
 
